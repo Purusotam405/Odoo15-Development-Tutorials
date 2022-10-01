@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_id" model="ir.ui.view">
+        <field name="name">View.name</field>
+        <field name="model">object_name</field>
+        <field name="priority" eval="16"/>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="my_field_1" />
+                <field name="my_field_2" string="My Label" widget="statusbar" statusbar_visible="draft,sent,progress,done" />
+
+            </tree>
+        </field>
+
+
+
+    </record>
+</odoo>

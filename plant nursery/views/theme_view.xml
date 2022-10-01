@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record>
+        <template id="my_title" name="my_title">
+            <h1 >This is a HTML Block</h1>
+            <h2 class="lead">This is a sub-block</h2>
+        </template>
+
+    </record>
+</odoo>

@@ -41,7 +41,7 @@ class CreateAppointmentwizard(models.TransientModel):
         #     'type': 'ir.actions.act_window',
         #     'name': 'Appointments',
         #     'res_model': 'hospital.appointment',
-        #     'view': 'form',
+        #     'xml': 'form',
         #     'view_mode': 'tree,from',
         #     'target': 'current',
         # }
