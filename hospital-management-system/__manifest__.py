@@ -20,6 +20,8 @@
         'views/kids_view.xml',
         'views/patient_gender_view.xml',
         'views/sale.xml',
+        'report/patient_card.xml',
+        'report/report.xml'
 
     ],
     'demo': [],

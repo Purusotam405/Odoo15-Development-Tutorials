@@ -23,4 +23,11 @@
         </field>
 
     </record>
+
+
+    <menuitem id="menu_sale_appointment"
+              name="Appointments"
+              parent="sale.sale_order_menu"
+              sequence="2"
+              action="appointment_action"/>
 </odoo>
