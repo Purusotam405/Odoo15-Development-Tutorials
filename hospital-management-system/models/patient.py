@@ -65,7 +65,6 @@ class HospitalPatient(models.Model):
         return res
 
     def copy(self, default=None):
-        print('Successfully overriden')
         if default is None:
             default = {}
         if not default.get('name'):
