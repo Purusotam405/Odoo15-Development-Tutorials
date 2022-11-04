@@ -4,7 +4,7 @@
         <field name="name">hospital.patient.kanban</field>
         <field name="model">hospital.patient</field>
         <field name="arch" type="xml">
-            <kanban>
+            <kanban default_order="id asc">
                 <field name="id"/>
                 <field name="name"/>
                 <field name="gender"/>
@@ -46,12 +46,13 @@
         <field name="model">hospital.patient</field>
         <field name="arch" type="xml">
             <tree>
+                <field name="reference"/>
                 <field name="name"/>
                 <field name="responsible_id"/>
                 <field name="age"/>
                 <field name="gender"/>
                 <field name="note"/>
-                <field name="state"/>
+                <field name="appointment_count"/>
             </tree>
         </field>
     </record>
@@ -98,6 +99,24 @@
                             <field name="gender" invisible="context.get('hide_gender')"/>
                             <field name="note"/>
                         </group>
+                        <notebook>
+                            <page string="Appointments" name="appointment">
+                                <field name="appointment_ids" readonly="1">
+                                    <tree create="0" edit="0" delete="0">
+                                        <field name="name"/>
+                                        <field name="reference"/>
+                                        <field name="doctor_id"/>
+                                        <field name="patient_id"/>
+                                        <field name="age" optional="show"/>
+                                        <field name="gender" optional="show"/>
+                                        <field name="date_appointment" optional="show"/>
+                                        <!--                <field name="date_checkup" optional="show"/>-->
+                                        <field name="note" optional="show"/>
+                                        <field name="state" optional="show"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
                     </group>
                 </sheet>
                 <div class="oe_chatter">

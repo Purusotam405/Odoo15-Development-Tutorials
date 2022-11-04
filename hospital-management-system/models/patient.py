@@ -1,10 +1,18 @@
 from odoo import api, fields, models, _
+from odoo.exceptions import ValidationError
 
 
 class HospitalPatient(models.Model):
     _name = "hospital.patient"
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = "Hospital Patient"
+    _order = "id desc"
+
+    @api.model
+    def default_get(self, fields):
+        res = super(HospitalPatient, self).default_get(fields)
+        res['gender'] = 'male'
+        return res
 
     name = fields.Char(string='Name', required=True)
     reference = fields.Char(string='Order Reference', required=True, copy=False, readonly=True,
@@ -24,6 +32,7 @@ class HospitalPatient(models.Model):
     responsible_id = fields.Many2one('res.partner', string="Responsible")
     appointment_count = fields.Integer(string="Appointment Count", compute="_compute_appointment_count")
     image = fields.Binary(string="Patient_image")
+    appointment_ids = fields.One2many('hospital.appointment', 'patient_id', string='Appointments')
 
     def _compute_appointment_count(self):
         for rec in self:
@@ -50,14 +59,36 @@ class HospitalPatient(models.Model):
     def create(self, vals):
         if not vals.get('note'):
             vals['note'] = 'New Patient'
-            if vals.get('reference', _('New')) == _('New'):
-                vals['reference'] = self.env['ir.sequence'].next_by_code('hospital.patient') or _('New')
+        if vals.get('reference', _('New')) == _('New'):
+            vals['reference'] = self.env['ir.sequence'].next_by_code('hospital.patient.seq') or _('New')
         res = super(HospitalPatient, self).create(vals)
         return res
 
-    @api.model
-    def default_get(self, fields):
-        res = super(HospitalPatient, self).default_get(fields)
-        print("res...", res)
-        res['gender'] = 'male'
-        return res
+    def copy(self, default=None):
+        print('Successfully overriden')
+        if default is None:
+            default = {}
+        if not default.get('name'):
+            default['name'] = _("%s (COPY)", self.name)
+        default['note'] = "Copied Record"
+        return super(HospitalPatient, self.copy(default))
+
+    @api.constrains('name')
+    def check_name(self):
+        for rec in self:
+            patients = self.env['hospital.patient'].search([('name', '=', rec.name), ('id', '!=', rec.id)])
+            if patients:
+                raise ValidationError(_("Name %s Already Exists" % rec.name))
+
+    @api.constrains('age')
+    def check_age(self):
+        for rec in self:
+            if rec.age == 0:
+                raise ValidationError(_("Age cannot be zero"))
+
+    def name_get(self):
+        result = []
+        for rec in self:
+            name = '[' + rec.reference + ']' + rec.name
+            result.append((rec.id, name))
+        return result
