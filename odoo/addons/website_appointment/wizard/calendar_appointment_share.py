@@ -5,7 +5,7 @@ from odoo import models
 from odoo.osv.expression import AND
 
 
-class CalendarWebsiteAppointmentShare(models.TransientModel):
+class CalendarWebsitAppointmentShare(models.TransientModel):
     _inherit = 'calendar.appointment.share'
 
     def _domain_appointment_type_ids(self):
