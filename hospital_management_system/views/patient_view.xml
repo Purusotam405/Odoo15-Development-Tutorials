@@ -17,6 +17,7 @@
                 <field name="name"/>
                 <field name="gender"/>
                 <field name="age"/>
+                <field name="email"/>
                 <field name="note"/>
                 <templates>
                     <t t-name="kanban-box">
@@ -34,6 +35,10 @@
                                     <li>
                                         Gender:
                                         <field name="gender"/>
+                                    </li>
+                                    <li>
+                                        Email:
+                                        <field name="email"/>
                                     </li>
                                 </ul>
                             </div>
@@ -58,6 +63,7 @@
                 <field name="name"/>
                 <field name="responsible_id"/>
                 <field name="age"/>
+                <field name="email"/>
                 <field name="gender"/>
                 <field name="note"/>
                 <field name="appointment_count"/>
@@ -80,6 +86,8 @@
                     <button id="button_draft" name="action_draft" string="Send To Draft" class="btn-primary"
                             states="cancel"
                             type="object"/>
+                    <!--                    <button name="action_send_card" type="object" string="Send By Email" class="oe_highlight"-->
+                    <!--                            groups="hospital_management_system.group_hospital_manager"/>-->
                     <button id="button_create_appointment" name="%(action_create_appointment)d"
                             string="Create Appointment"
                             class="btn-primary"
@@ -90,9 +98,9 @@
                 </header>
                 <sheet>
                     <div class="oe_button_box" name="button_box">
-                        <button name="action_open_appointments" type="object" class="oe_stat_button" icon="fa-calendar" >
+                        <button name="action_open_appointments" type="object" class="oe_stat_button" icon="fa-calendar">
                             <div class="o_stat_info">
-                                <field name="appointment_count"  class="o_stat_value"/>
+                                <field name="appointment_count" class="o_stat_value"/>
                                 <span class="o_stat_text">Appointments</span>
                             </div>
                         </button>
@@ -109,6 +117,7 @@
                             <field name="name"/>
                             <field name="responsible_id"/>
                             <field name="age"/>
+                            <field name="email"/>
                             <field name="appointment_count"/>
                         </group>
                         <group>

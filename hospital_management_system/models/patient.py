@@ -19,6 +19,7 @@ class HospitalPatient(models.Model):
                             default=lambda self: _('New'))
 
     age = fields.Integer(string='Age', tracking=True)
+    email = fields.Char(string='Email', tracking=True)
     gender = fields.Selection([
         ('male', 'Male'),
         ('female', 'Female'),

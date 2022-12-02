@@ -16,6 +16,7 @@
     'data': [
         'security/ir.model.access.csv',
         'data/data.xml',
+        'data/mail_template_data.xml',
         'wizard/create_appointment_view.xml',
         'wizard/search_appointment_view.xml',
         'wizard/appointment_report_view.xml',
@@ -27,11 +28,11 @@
         'views/partner.xml',
         'views/patient_gender_view.xml',
         'views/sale.xml',
+        'views/settings.xml',
         'report/appointment_details.xml',
         'report/patient_card.xml',
         'report/report.xml',
         # 'report/all_patient_list.xml'
-
 
     ],
     'demo': [],

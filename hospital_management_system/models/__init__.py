@@ -1,4 +1,6 @@
 from . import patient
-from . import doctor
 from . import sale
+from . import settings
 from . import appointment
+from . import doctor
+
