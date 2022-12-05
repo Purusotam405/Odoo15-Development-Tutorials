@@ -18,6 +18,8 @@
                 <field name="gender"/>
                 <field name="age"/>
                 <field name="email"/>
+                <field name="company"/>
+                <field name="website"/>
                 <field name="note"/>
                 <templates>
                     <t t-name="kanban-box">
@@ -39,6 +41,14 @@
                                     <li>
                                         Email:
                                         <field name="email"/>
+                                    </li>
+                                    <li>
+                                        Company:
+                                        <field name="company"/>
+                                    </li>
+                                    <li>
+                                        Website:
+                                        <field name="website"/>
                                     </li>
                                 </ul>
                             </div>
@@ -64,6 +74,8 @@
                 <field name="responsible_id"/>
                 <field name="age"/>
                 <field name="email"/>
+                <field name="company"/>
+                <field name="website"/>
                 <field name="gender"/>
                 <field name="note"/>
                 <field name="appointment_count"/>
@@ -86,12 +98,12 @@
                     <button id="button_draft" name="action_draft" string="Send To Draft" class="btn-primary"
                             states="cancel"
                             type="object"/>
-                    <!--                    <button name="action_send_card" type="object" string="Send By Email" class="oe_highlight"-->
-                    <!--                            groups="hospital_management_system.group_hospital_manager"/>-->
+
                     <button id="button_create_appointment" name="%(action_create_appointment)d"
                             string="Create Appointment"
                             class="btn-primary"
                             type="action"/>
+                    <button name="action_send_card" type="object" string="Send By Email" class="oe_highlight"/>
 
                     <field name="state" widget="statusbar" options="{'clickable':'1'}"
                            statusbar_visible="draft,confirm,done"/>
@@ -118,6 +130,8 @@
                             <field name="responsible_id"/>
                             <field name="age"/>
                             <field name="email"/>
+                            <field name="company"/>
+                            <field name="website"/>
                             <field name="appointment_count"/>
                         </group>
                         <group>
@@ -134,6 +148,8 @@
                                         <field name="patient_id"/>
                                         <field name="age" optional="show"/>
                                         <field name="gender" optional="show"/>
+                                        <field name="company" optional="show"/>
+                                        <field name="website" optional="show"/>
                                         <field name="date_appointment" optional="show"/>
                                         <!--                <field name="date_checkup" optional="show"/>-->
                                         <field name="note" optional="show"/>

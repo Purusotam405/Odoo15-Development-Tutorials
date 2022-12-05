@@ -20,6 +20,8 @@ class HospitalPatient(models.Model):
 
     age = fields.Integer(string='Age', tracking=True)
     email = fields.Char(string='Email', tracking=True)
+    company = fields.Char(string="Company", tracking=True)
+    website = fields.Char(string="Website", tracking=True)
     gender = fields.Selection([
         ('male', 'Male'),
         ('female', 'Female'),
@@ -39,6 +41,11 @@ class HospitalPatient(models.Model):
         for rec in self:
             appointment_count_id = self.env['hospital.appointment'].search_count([('patient_id', '=', rec.id)])
             rec.appointment_count = appointment_count_id
+
+    def action_send_card(self):
+        template_id = self.env.ref('hospital_management_system.patient_card_email_template').id
+        template = self.env['mail.template'].browse(template_id)
+        template.send_mail(self.id, force_send=True)
 
     def action_confirm(self):
         for rec in self:

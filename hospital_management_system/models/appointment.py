@@ -18,6 +18,8 @@ class HospitalAppointment(models.Model):
     age = fields.Integer(string='Age', related="patient_id.age", tracking=True)
     email = fields.Char(string='Email', tracking=True)
     doctor_id = fields.Many2one('hospital.doctor', string="Doctor", required=True)
+    company = fields.Char(string="Company", tracking=True)
+    website = fields.Char(string="Website", tracking=True)
     gender = fields.Selection([
         ('male', 'Male'),
         ('female', 'Female'),
@@ -48,8 +50,8 @@ class HospitalAppointment(models.Model):
         template = self.env.ref('hospital_management_system.appointment_mail_template')
         for rec in self:
             if rec.patient_id.email:
-                email_values = {'subject': 'Test OM'}
-                template.send_mail(rec.id, force_send=True, email_values=email_values)
+                # email_values = {'subject': 'Test OM'}
+                template.send_mail(rec.id, force_send=True)
 
     def action_cancel(self):
         self.state = "cancel"

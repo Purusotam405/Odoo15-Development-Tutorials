@@ -17,6 +17,7 @@
         'security/ir.model.access.csv',
         'data/data.xml',
         'data/mail_template_data.xml',
+        # 'data/mail_template.xml',
         'wizard/create_appointment_view.xml',
         'wizard/search_appointment_view.xml',
         'wizard/appointment_report_view.xml',

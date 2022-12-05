@@ -24,11 +24,10 @@ class PatientCardXlsx(models.AbstractModel):
             row += 1
             if obj.image:
                 patient_image = io.BytesIO(base64.b64decode(obj.image))
-                sheet.insert_image(row, col, "image.png", {'image_data': product_image, 'x_scale': 0.5, 'y-scale': 0.5})
+                sheet.insert_image(row, col, "image.png", {'image_data': patient_image, 'x_scale': .5, 'y-scale': .5})
             sheet.write(row, col, 'Name', bold)
             sheet.write(row, col + 1, obj.name)
-
-            row += 5
+            row += 6
             sheet.write(row, col, 'Age', bold)
             sheet.write(row, col + 1, obj.age)
             row += 1
@@ -37,5 +36,3 @@ class PatientCardXlsx(models.AbstractModel):
             sheet.write(row, col + 1, obj.reference)
 
             row += 2
-
-            sheet.merge_range(row, col, row + 1, col + 1, 'ID Card', format_1)
