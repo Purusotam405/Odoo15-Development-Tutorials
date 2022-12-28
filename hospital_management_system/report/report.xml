@@ -55,5 +55,14 @@
 
     </record>
 
+    <record id="report_appointment_xls" model="ir.actions.report">
+        <field name="name">Patient Appointment Excel</field>
+        <field name="model">appointment.report.wizard</field>
+        <field name="report_type">xlsx</field>
+        <field name="report_name">hospital_management_system.report_appointment_xls</field>
+        <field name="report_file">hospital_management_system.report_appointment_xls</field>
+        <field name="binding_type">report</field>
+    </record>
+
 
 </odoo>

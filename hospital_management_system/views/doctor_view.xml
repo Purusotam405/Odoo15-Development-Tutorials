@@ -98,6 +98,7 @@
                             <field name="doctor_name"/>
                             <field name="age"/>
                             <field name="gender"/>
+                            <field name="appointment_ids" widget="many2many_tags"/>
                             <field name="note"/>
                             <field name="active" invisble="1"/>
 

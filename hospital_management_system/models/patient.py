@@ -18,24 +18,44 @@ class HospitalPatient(models.Model):
     reference = fields.Char(string='Order Reference', required=True, copy=False, readonly=True,
                             default=lambda self: _('New'))
 
+    eid = fields.Integer(string='EID', tracking=True)
+    cid = fields.Integer(string='CID', tracking=True)
     age = fields.Integer(string='Age', tracking=True)
     email = fields.Char(string='Email', tracking=True)
-    company = fields.Char(string="Company", tracking=True)
-    website = fields.Char(string="Website", tracking=True)
     gender = fields.Selection([
         ('male', 'Male'),
         ('female', 'Female'),
         ('other', 'Other')
     ], required=True, string="Gender", default="male", tracking=True)
+    designation = fields.Char(String="Designation")
+    department = fields.Char(String="Department/Brand/Division/Unit")
+    dob = fields.Date(String="D.O.B")
+    blood_group = fields.Char(String="Blood Group")
+    parents_detail = fields.Char(String="Parents Details")
+    father = fields.Char(String="Father")
+    father_cid = fields.Integer(String="Fathers CID")
+    mother = fields.Char(String="Mother")
+    mother_cid = fields.Integer(String="Mothers CID")
+    village = fields.Char(String="Village")
+    gewog = fields.Char(String="Gewog")
+    dzongkhag = fields.Char(String="Dzongkhag")
 
-    note = fields.Text(string='Description')
+    # company = fields.Char(string="Company", tracking=True)
+    # website = fields.Char(string="Website", tracking=True)
+
+    # note = fields.Text(string='Description')
     state = fields.Selection([('draft', 'Draft'), ('confirm', 'Confirmed'),
                               ('done', 'Done'), ('cancel', 'Cancelled')], default="draft", string="Status",
                              tracking=True)
-    responsible_id = fields.Many2one('res.partner', string="Responsible")
+
+    # responsible_id = fields.Many2one('res.partner', string="Responsible")
     appointment_count = fields.Integer(string="Appointment Count", compute="_compute_appointment_count")
     image = fields.Binary(string="Patient_image")
+
     appointment_ids = fields.One2many('hospital.appointment', 'patient_id', string='Appointments')
+
+    # father_name = fields.Char('hospital.patient', string='Fathers Name')
+    # date_appointment = fields.Date(string="Date")
 
     def _compute_appointment_count(self):
         for rec in self:

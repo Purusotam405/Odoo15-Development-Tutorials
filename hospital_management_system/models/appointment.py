@@ -17,7 +17,9 @@ class HospitalAppointment(models.Model):
     patient_name_id = fields.Many2one('hospital.patient', String='Patient Name', required=True)
     age = fields.Integer(string='Age', related="patient_id.age", tracking=True)
     email = fields.Char(string='Email', tracking=True)
-    doctor_id = fields.Many2one('hospital.doctor', string="Doctor", required=True)
+    doctor_id = fields.Many2one('hospital.doctor', string="Doctor")
+    doctor_ids = fields.Many2many('hospital.doctor', 'hospital_patient_rel', 'appointment_id', 'doctor_id_rec',
+                                  string="Doctors")
     company = fields.Char(string="Company", tracking=True)
     website = fields.Char(string="Website", tracking=True)
     gender = fields.Selection([
@@ -25,6 +27,7 @@ class HospitalAppointment(models.Model):
         ('female', 'Female'),
         ('other', 'Other')
     ], required=True, string="Gender", related="patient_id.gender", tracking=True)
+    phone_number = fields.Char(String="Phone Number", tracking=True)
     state = fields.Selection([('draft', 'Draft'), ('confirm', 'Confirmed'),
                               ('done', 'Done'), ('cancel', 'Cancelled')], default="draft", string="Status",
                              tracking=True)

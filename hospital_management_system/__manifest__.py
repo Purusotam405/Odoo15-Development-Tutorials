@@ -6,7 +6,7 @@
     'sequence': -100,
     'description': """ Hospital Management System """,
     'images': [
-        'static/description/logo.png'
+        'static/description/logo1.png'
     ],
     'depends': [
         'sale',
@@ -30,6 +30,7 @@
         'views/patient_gender_view.xml',
         'views/sale.xml',
         'views/settings.xml',
+        'views/template.xml',
         'report/appointment_details.xml',
         'report/patient_card.xml',
         'report/report.xml',

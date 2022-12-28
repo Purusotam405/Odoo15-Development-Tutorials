@@ -16,10 +16,10 @@
                                                      t-attr-src="'/web/static/src/img/placeholder.png'" height="140"
                                                      border="1" width="120"/>
 
-                                                <img t-if="not o_image"
-                                                     t-attr-src="'data:image/png:based,%s' % to_text(o.image)"
-                                                     height="140"
-                                                     border="1" width="120"/>
+                                                <!--                                                <img t-if="not o_image"-->
+                                                <!--                                                     t-attr-src="'data:image/png:based,%s' % to_text(o.image)"-->
+                                                <!--                                                     height="140"-->
+                                                <!--                                                     border="1" width="120"/>-->
                                             </p>
                                         </td>
                                         <td with="60%">
@@ -61,6 +61,15 @@
                                                     </td>
                                                 </tr>
                                             </table>
+                                            <div>
+                                                <img t-att-src="'/report/barcode/QR/'o.name"
+                                                     style="width:150px;height=75px" alt="Barcode"/>
+                                            </div>
+
+                                            <!--                                            <div>-->
+                                            <!--                                                <span t-field="o.name"-->
+                                            <!--                                                      t-options="{'widget':'barcode','humanreadable':1,'widget':400,'height':100}"/>-->
+                                            <!--                                            </div>-->
                                         </td>
                                     </tr>
                                 </table>

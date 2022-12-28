@@ -19,7 +19,9 @@ class HospitalDoctor(models.Model):
     note = fields.Text(string='Description')
     image = fields.Binary(string="Patient Image")
     appointment_count = fields.Integer(string="Appointment Count", compute="_compute_appointment_count")
-    active=fields.Boolean(string="Active", default="True")
+    active = fields.Boolean(string="Active", default="True")
+    appointment_ids = fields.Many2many('hospital.appointment', 'hospital_patient_rel', 'doctor_id_rec', 'appointment_id',
+                                       string="Appointments")
 
     date_appointment = fields.Date(string="Date")
     date_time_checkup = fields.Datetime(string="Time_Checkup")

@@ -13,42 +13,92 @@
         <field name="model">hospital.patient</field>
         <field name="arch" type="xml">
             <kanban default_order="id asc">
-                <field name="id"/>
+                <field name="reference"/>
                 <field name="name"/>
+                <field name="eid"/>
+                <field name="cid"/>
                 <field name="gender"/>
+                <field name="designation"/>
+                <field name="department"/>
+                <field name="dob"/>
+                <field name="blood_group"/>
                 <field name="age"/>
-                <field name="email"/>
-                <field name="company"/>
-                <field name="website"/>
-                <field name="note"/>
+                <field name="parents_detail"/>
+                <field name="village"/>
+                <field name="gewog"/>
+                <field name="dzongkhag"/>
                 <templates>
                     <t t-name="kanban-box">
                         <div t-attf-class="oe_kanban_global_click">
                             <div class="oe_kanban_details">
                                 <ul>
                                     <li>
+                                        Reference:
+                                        <field name="reference"/>
+                                    </li>
+                                    <li>
                                         Name:
                                         <field name="name"/>
                                     </li>
                                     <li>
-                                        Age:
+                                        EID:
                                         <field name="age"/>
+                                    </li>
+                                    <li>
+                                        CID:
+                                        <field name="cid"/>
                                     </li>
                                     <li>
                                         Gender:
                                         <field name="gender"/>
                                     </li>
                                     <li>
-                                        Email:
-                                        <field name="email"/>
+                                        Designation:
+                                        <field name="designation"/>
                                     </li>
                                     <li>
-                                        Company:
-                                        <field name="company"/>
+                                        Department/Branch/Division/Unit:
+                                        <field name="department"/>
                                     </li>
                                     <li>
-                                        Website:
-                                        <field name="website"/>
+                                        D.O.B:
+                                        <field name="dob"/>
+                                    </li>
+                                    <li>
+                                        Blood Group:
+                                        <field name="blood_group"/>
+                                    </li>
+                                    <li>
+                                        Age:
+                                        <field name="age"/>
+                                    </li>
+                                    <li>
+                                        Father:
+                                        <field name="father"/>
+                                    </li>
+                                    <li>
+                                        Fathers CID:
+                                        <field name="father_cid"/>
+                                    </li>
+                                    <li>
+                                        Mother:
+                                        <field name="mother"/>
+                                    </li>
+                                    <li>
+                                        Mothers CID:
+                                        <field name="mother_cid"/>
+                                    </li>
+                                    <li>
+                                        Village:
+                                        <field name="village"/>
+                                    </li>
+                                    <li>
+                                        Gewog:
+                                        <field name="gewog"/>
+                                    </li>
+                                    <li>
+                                        Dzongkhag:
+                                        <field name="dzongkhag"/>
                                     </li>
                                 </ul>
                             </div>
@@ -71,14 +121,15 @@
             <tree expand="1">
                 <field name="reference"/>
                 <field name="name"/>
-                <field name="responsible_id"/>
+                <!--                <field name="responsible_id"/>-->
+                <field name="eid"/>
+                <field name="cid"/>
+                <field name="designation"/>
+                <field name="department"/>
+                <field name="dob"/>
+                <field name="blood_group"/>
                 <field name="age"/>
-                <field name="email"/>
-                <field name="company"/>
-                <field name="website"/>
-                <field name="gender"/>
-                <field name="note"/>
-                <field name="appointment_count"/>
+                <field name="parents_detail"/>
             </tree>
         </field>
     </record>
@@ -127,29 +178,48 @@
                     <group>
                         <group>
                             <field name="name"/>
-                            <field name="responsible_id"/>
-                            <field name="age"/>
-                            <field name="email"/>
-                            <field name="company"/>
-                            <field name="website"/>
-                            <field name="appointment_count"/>
+                            <!--                            <field name="responsible_id"/>-->
+                            <field name="eid"/>
+                            <field name="cid"/>
+                            <field name="gender" invisible="context.get('hide_gender')"/>
+                            <field name="designation"/>
+                            <field name="department"/>
                         </group>
                         <group>
-                            <field name="gender" invisible="context.get('hide_gender')"/>
-                            <field name="note"/>
+                            <field name="dob"/>
+                            <field name="blood_group"/>
+                            <field name="age"/>
+                            <group>
+                                <field name="parents_detail"/>
+                                <field name="father"/>
+                                <field name="father_cid"/>
+                                <field name="mother"/>
+                                <field name="mother_cid"/>
+                            </group>
+                            <!--                            <field name="appointment_count"/>-->
+                            <!--                            <field name="date_appointment"/>-->
+                            <!--                            <field name="note"/>-->
                         </group>
+                        <!--                        <group>-->
+                        <!--                            <field name="village"/>-->
+                        <!--                            <field name="gewog"/>-->
+                        <!--                            <field name="dzongkhag"/>-->
+                        <!--                                -->
+                        <!--                        </group>-->
+
                         <notebook>
                             <page string="Appointments" name="appointment">
                                 <field name="appointment_ids" readonly="1">
                                     <tree create="0" edit="0" delete="0">
-                                        <field name="name"/>
                                         <field name="reference"/>
+                                        <field name="name"/>
                                         <field name="doctor_id"/>
                                         <field name="patient_id"/>
                                         <field name="age" optional="show"/>
                                         <field name="gender" optional="show"/>
                                         <field name="company" optional="show"/>
                                         <field name="website" optional="show"/>
+                                        <field name="phone_number" optional="show"/>
                                         <field name="date_appointment" optional="show"/>
                                         <!--                <field name="date_checkup" optional="show"/>-->
                                         <field name="note" optional="show"/>
@@ -177,7 +247,7 @@
         <field name="arch" type="xml">
             <search string="Patients">
                 <field name="name"/>
-                <field name="note"/>
+                <!--                <field name="note"/>-->
                 <separator/>
                 <filter string="Male" name="male" domain="[('gender', '=', 'male')]"/>
                 <filter string="Female" name="female" domain="[('gender', '=' ,'female')]"/>
@@ -185,7 +255,7 @@
                 <group expand="1" string="Group By">
                     <filter string="Gender" name="gender" context="{'group_by':'gender'}"/>
                     <filter string="Patient Name" name="patient_name" context="{'group_by':'name'}"/>
-                    <filter string="Responsible" name="responsible_id" context="{'group_by':'responsible_id'}"/>
+                    <!--                    <filter string="Responsible" name="responsible_id" context="{'group_by':'responsible_id'}"/>-->
                 </group>
             </search>
         </field>
