@@ -27,8 +27,8 @@ class HospitalPatient(models.Model):
         ('female', 'Female'),
         ('other', 'Other')
     ], required=True, string="Gender", default="male", tracking=True)
-    designation = fields.Char(String="Designation")
-    department = fields.Char(String="Department/Brand/Division/Unit")
+    designation = fields.Many2one('res.partner', String="Designation")
+    department = fields.Many2one('res.partner', String="Department/Brand/Division/Unit")
     dob = fields.Date(String="D.O.B")
     blood_group = fields.Char(String="Blood Group")
     parents_detail = fields.Char(String="Parents Details")

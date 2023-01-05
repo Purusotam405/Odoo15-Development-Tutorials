@@ -29,7 +29,6 @@
         <field name="report_file">hospital_management_system.report_patient_id_card_xls</field>
         <field name="binding_model_id" ref="model_hospital_patient"/>
         <field name="binding_type">report</field>
-
     </record>
 
     <record id="action_report_appointment" model="ir.actions.report">

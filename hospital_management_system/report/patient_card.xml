@@ -3,23 +3,24 @@
     <template id="report_patient_id_card">
         <t t-foreach="docs" t-as="o">
             <t t-call="web.html_container">
-                <t t-call="web.basic_layout">
+                <t t-call="web.external_layout">
                     <div class="page">
                         <div class="oe_structure"/>
                         <div class="row">
                             <div class="col-xs-8">
-                                <table class="table table_condensed" style="border:3px solid black important!">
+                                <table class="table table-condensed" style="border:3px solid black !important;">
                                     <tr>
                                         <td width="40%">
                                             <p style="text-align:center;padding-top:10px">
                                                 <img t-if="not o_image"
-                                                     t-attr-src="'/web/static/src/img/placeholder.png'" height="140"
+                                                     t-attr-src="'/web/static/src/img/placeholder.png'"
+                                                     height="140"
                                                      border="1" width="120"/>
 
-                                                <!--                                                <img t-if="not o_image"-->
-                                                <!--                                                     t-attr-src="'data:image/png:based,%s' % to_text(o.image)"-->
-                                                <!--                                                     height="140"-->
-                                                <!--                                                     border="1" width="120"/>-->
+                                                <img t-if="o_image"
+                                                     t-attr-src="'data:image/png:based,%s' % to_text(o.image)"
+                                                     height="140"
+                                                     border="1" width="120"/>
                                             </p>
                                         </td>
                                         <td with="60%">
@@ -61,10 +62,10 @@
                                                     </td>
                                                 </tr>
                                             </table>
-                                            <div>
-                                                <img t-att-src="'/report/barcode/QR/'o.name"
-                                                     style="width:150px;height=75px" alt="Barcode"/>
-                                            </div>
+                                            <!--                                            <div>-->
+                                            <!--                                                <img t-att-src="'/report/barcode/QR/'o.name"-->
+                                            <!--                                                     style="width:150px;height=75px" alt="Barcode"/>-->
+                                            <!--                                            </div>-->
 
                                             <!--                                            <div>-->
                                             <!--                                                <span t-field="o.name"-->

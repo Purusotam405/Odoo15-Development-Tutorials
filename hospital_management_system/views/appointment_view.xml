@@ -20,7 +20,7 @@
                 <field name="gender"/>
                 <field name="age"/>
                 <field name="email"/>
-                <field name="note"/>
+                <!--                <field name="note"/>-->
                 <field name="company"/>
                 <field name="website"/>
                 <field name="phone_number"/>
@@ -93,7 +93,7 @@
                 <field name="website" optional="show"/>
                 <field name="phone_number" optional="show"/>
                 <field name="date_appointment" optional="show"/>
-                <field name="note" optional="show"/>
+                <!--                <field name="note" optional="show"/>-->
                 <field name="state" optional="show"/>
             </tree>
         </field>
@@ -176,7 +176,7 @@
 
                         </page>
                         <page string="Other Info" name="other_info">
-                            <field name="note"/>
+                            <!--                            <field name="note"/>-->
                         </page>
                     </notebook>
                 </sheet>
@@ -196,7 +196,7 @@
         <field name="arch" type="xml">
             <search string="Appointments">
                 <field name="name"/>
-                <field name="note"/>
+                <!--                <field name="note"/>-->
                 <separator/>
                 <filter string="Male" name="male" domain="[('gender', '=', 'male')]"/>
                 <filter string="Female" name="female" domain="[('gender', '=' ,'female')]"/>
